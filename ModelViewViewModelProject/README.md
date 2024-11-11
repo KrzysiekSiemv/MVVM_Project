@@ -10,4 +10,4 @@ Jest to przyk≥adowy projekt zawierajπcy podstawowe dzia≥anie projektu MVVM, w kt
 - View/MainPage.xaml - widok projektu
 
 ## Pobierz projekt i sprawdü sam!
-<pre><code>git clone https://github.com/KrzysiekSiemv/MVVM__Project</code></pre>
+<pre><code>git clone https://github.com/KrzysiekSiemv/MVVM_Project</code></pre>

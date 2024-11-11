@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ModelViewViewModelProject.ViewModel"
+             x:Class="ModelViewViewModelProject.View.MainPage">
+
+    <!-- 
+    Podpinanie widoku do ViewModel,
+    wymaga również dodania do ContentPage zmiennej, która odwołuje się do danej przestrzeni nazwy, czyli np.:
+        
+    xmlns:local="clr-namespace:ModelViewViewModelProject.ViewModel"
+    -->
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    
+    
+    <ScrollView>
+        <StackLayout Padding="10">
+            <!-- 
+            Binding działa również w drugą stronę. 
+            Poza wyświetlaniem zawartości z danego obiektu możemy też i przypisać wartości do zmiennych, które mamy w naszym MainPageViewModel.cs jak np. NewBook.Title
+            -->
+            <StackLayout>
+                <Label Text="Dodaj nową książkę" FontSize="20" />
+                <Entry Placeholder="Tytuł" Text="{Binding NewBook.Title}" />
+                <Entry Placeholder="Cena" Keyboard="Numeric" Text="{Binding NewBook.Price}" />
+                <Entry Placeholder="Ocena" Keyboard="Numeric" Text="{Binding NewBook.Rate}" />
+                <Entry Placeholder="Ilość" Keyboard="Numeric" Text="{Binding NewBook.Amount}" />
+                <!-- 
+                Tutaj mamy przycisk, który nie ma Clicked jak to pisaliśmy wcześniej, tylko jest przypisana komenda ICommand, którą stworzyliśmy w MainPageViewModel.cs:
+                public ICommand AddBookCmd { get; }
+                
+                Gdzie również nastąpiło zdefiniowanie naszej komendy w następujący sposób:
+                AddBookCmd = new Command(AddBook);
+                AddBook jest to funkcja, która została utworzona w pliku MainPageViewModel.cs
+                -->
+                <Button Text="Dodaj książkę" Command="{Binding AddBookCmd}" />
+            </StackLayout>
+
+            <!-- 
+            Jeżeli mamy listę obiektów, które chcemy wyświetlić możemy użyć do tego np. CollectionView w którym podpinamy naszą listę typu:
+            
+                public ObservableCollection<Book> Books { get; set; }
+            
+            Oczywiście musimy też przypisać odpowiednio zmienne z naszego obiektu.
+            -->
+            <CollectionView ItemsSource="{Binding Books}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Padding="10" Spacing="20">
+                            <Label Text="{Binding Title}" FontSize="18" VerticalOptions="Center" />
+                            <Label Text="{Binding Price, StringFormat='Cena: {0:C}'}" FontSize="18" VerticalOptions="Center" />
+                            <Label Text="{Binding Rate, StringFormat='Ocena: {0:F1}'}" FontSize="18" VerticalOptions="Center" />
+                            <Label Text="{Binding Amount, StringFormat='Dostępna ilość: {0}'}" FontSize="18" VerticalOptions="Center" />
+
+                            <Button Text="+" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPageViewModel }}, Path=IncreaseAmountBookCmd }" CommandParameter="{Binding}" />
+                            <Button Text="-" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPageViewModel }}, Path=DecreaseAmountBookCmd }" CommandParameter="{Binding}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

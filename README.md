@@ -1,13 +1,13 @@
 # Projekt struktury MVVM - .NET MAUI
-Jest to przyk³adowy projekt zawieraj¹cy podstawowe dzia³anie projektu MVVM, w którym:
-- Mo¿na wyœwietlaæ zawartoœæ listy ksi¹¿ek,
-- Tworzyæ nowy obiekt oraz dodawaæ do listy,
-- Modyfikowaæ zmienne utworzonych obiektów w liœcie
+Jest to przykÅ‚adowy projekt zawierajÄ…cy podstawowe dziaÅ‚anie projektu MVVM, w ktÃ³rym:
+- MoÅ¼na wyÅ›wietlaÄ‡ zawartoÅ›Ä‡ listy ksiÄ…Å¼ek,
+- TworzyÄ‡ nowy obiekt oraz dodawaÄ‡ do listy,
+- ModyfikowaÄ‡ zmienne utworzonych obiektÃ³w w liÅ›cie
 
-## Pliki na które warto zajrzeæ:
-- ViewModel/MainPageViewModel.cs - plik, który zawiera ca³y kod C#,
-- Model/Book.cs - struktura obiektu ksi¹¿ki, która zawiera równie¿ kod odœwie¿aj¹cy
+## Pliki na ktÃ³re warto zajrzeÄ‡:
+- ViewModel/MainPageViewModel.cs - plik, ktÃ³ry zawiera caÅ‚y kod C#,
+- Model/Book.cs - struktura obiektu ksiÄ…Å¼ki, ktÃ³ra zawiera rÃ³wnieÅ¼ kod odÅ›wieÅ¼ajÄ…cy
 - View/MainPage.xaml - widok projektu
 
-## Pobierz projekt i sprawdŸ sam!
-<pre><code>git clone https://github.com/KrzysiekSiemv/MVVM__Project</code></pre>
+## Pobierz projekt i sprawdÅº sam!
+<pre><code>git clone https://github.com/KrzysiekSiemv/MVVM_Project</code></pre>
